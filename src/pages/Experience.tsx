@@ -96,32 +96,58 @@ export default function Experience() {
         {step >= 4 && "Manthan blocks it"}
       </h2>
 
+      {/* Explanation */}
       <div style={styles.explanation}>
-        <p>{explanation.title}</p>
-        <p>{explanation.text}</p>
+        <p style={styles.explTitle}>{explanation.title}</p>
+        <p style={styles.explText}>{explanation.text}</p>
       </div>
 
+      {/* PR Simulation */}
       <PRCard>
         {step === 0 && <Message text="AI generated PR" />}
+
         {step >= 1 && <Message text="AI code approved" />}
+
         {step >= 2 && (
-          <Message text="AI updated code" highlight />
+          <Message text="AI updated code after approval" highlight />
         )}
+
         {step >= 3 && (
           <>
-            <Message text="Validation removed" type="error" />
-            <CodeBlock />
+            <Message text="Validation removed — risk introduced" type="error" />
+
+            {/* ✅ FIXED: CodeBlock now has required props */}
+            <CodeBlock
+              before={`if (amount > limit) {
+  throw new Error("Limit exceeded");
+}`}
+              after={`// validation removed`}
+            />
           </>
         )}
+
         {step >= 4 && (
-          <Message text="BLOCKED by Manthan" type="block" />
+          <Message
+            text="BLOCKED by Manthan — code no longer matches approved version"
+            type="block"
+          />
         )}
 
-        <MergeButton blocked={step >= 4} />
+        {/* Decision */}
+        <div style={{ marginTop: "16px" }}>
+          <p style={styles.label}>Decision Outcome</p>
+          <MergeButton blocked={step >= 4} />
+        </div>
       </PRCard>
 
+      {/* Actions */}
       <div style={styles.actions}>
         <button
+          style={{
+            ...styles.replay,
+            opacity: isRunning ? 0.5 : 1,
+            cursor: isRunning ? "not-allowed" : "pointer",
+          }}
           disabled={isRunning}
           onClick={() => {
             setIsRunning(false);
@@ -131,7 +157,10 @@ export default function Experience() {
           {isRunning ? `Running (${timer}s)` : "Replay"}
         </button>
 
-        <button onClick={() => navigate("/concept")}>
+        <button
+          style={styles.primary}
+          onClick={() => navigate("/concept")}
+        >
           Try scenario →
         </button>
       </div>
@@ -149,28 +178,72 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     gap: "20px",
+    padding: "40px 20px",
   },
 
   title: {
     fontSize: "32px",
+    fontWeight: 600,
   },
 
   context: {
+    fontSize: "14px",
     opacity: 0.6,
+    textAlign: "center",
   },
 
   subTitle: {
     fontSize: "20px",
+    color: "rgba(255,255,255,0.7)",
+    textAlign: "center",
   },
 
   explanation: {
-    background: "#111",
-    padding: "16px",
-    borderRadius: "8px",
+    maxWidth: "600px",
+    textAlign: "center",
+    background: "#0b0b0b",
+    border: "1px solid rgba(255,255,255,0.1)",
+    borderRadius: "10px",
+    padding: "20px",
+  },
+
+  explTitle: {
+    fontWeight: 600,
+    marginBottom: "6px",
+  },
+
+  explText: {
+    fontSize: "14px",
+    color: "rgba(255,255,255,0.7)",
+  },
+
+  label: {
+    fontSize: "12px",
+    opacity: 0.6,
+    marginBottom: "6px",
   },
 
   actions: {
     display: "flex",
-    gap: "10px",
+    gap: "12px",
+    marginTop: "20px",
+  },
+
+  replay: {
+    padding: "10px 18px",
+    background: "transparent",
+    color: "#4ade80",
+    border: "1px solid #4ade80",
+    borderRadius: "6px",
+  },
+
+  primary: {
+    padding: "10px 18px",
+    background: "#4ade80",
+    color: "#000",
+    border: "none",
+    borderRadius: "6px",
+    fontWeight: 600,
+    cursor: "pointer",
   },
 };
