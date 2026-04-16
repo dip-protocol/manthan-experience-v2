@@ -23,6 +23,7 @@ export default function Navbar() {
           <NavLink to="/concept" label="Concept" active={isActive("/concept")} />
           <NavLink to="/experience" label="Experience" active={isActive("/experience")} />
           <NavLink to="/trust" label="Trust" active={isActive("/trust")} />
+          <NavLink to="/founder" label="Founder" active={isActive("/founder")} /> {/* ✅ ADDED */}
         </div>
       </div>
     </nav>
