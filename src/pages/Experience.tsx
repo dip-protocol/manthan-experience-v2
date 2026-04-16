@@ -11,33 +11,28 @@ function getExplanation(step: number) {
     case 0:
       return {
         title: "AI generates code",
-        text: "AI generates code instantly. It looks correct at first glance.",
+        text: "AI generates code instantly. It looks correct.",
       };
-
     case 1:
       return {
         title: "AI code approved",
-        text: "A reviewer approves the AI-generated code based on what they see.",
+        text: "You approve AI-generated code.",
       };
-
     case 2:
       return {
         title: "AI updates code",
-        text: "The AI regenerates or modifies code after approval. This version was never reviewed.",
+        text: "AI changes code after approval. Not reviewed.",
       };
-
     case 3:
       return {
         title: "Validation removed",
-        text: "The AI removes a critical validation check. The risk is subtle but real.",
+        text: "Critical validation removed. Risk introduced.",
       };
-
     case 4:
       return {
         title: "Manthan decision",
-        text: "The approved version does not match the current AI-generated code. Manthan blocks the merge.",
+        text: "Approved version ≠ current code. Blocked.",
       };
-
     default:
       return { title: "", text: "" };
   }
@@ -50,7 +45,6 @@ export default function Experience() {
   const [isRunning, setIsRunning] = useState(true);
   const [timer, setTimer] = useState(6);
 
-  // Auto sequence
   useEffect(() => {
     if (!isRunning) return;
 
@@ -90,76 +84,44 @@ export default function Experience() {
     <div style={styles.page}>
       <h1 style={styles.title}>AI Code Decision</h1>
 
-      {/* Context */}
       <p style={styles.context}>
         AI writes code faster than humans can verify it.
-        <br />
-        You approved it.
-        <br />
-        But did you verify it?
       </p>
 
-      {/* Narrative */}
       <h2 style={styles.subTitle}>
-        {step === 0 && "AI generates code."}
-        {step === 1 && "You approve it."}
-        {step === 2 && "AI updates the code."}
-        {step === 3 && "A critical check is removed."}
-        {step >= 4 && "Manthan blocks it."}
+        {step === 0 && "AI generates code"}
+        {step === 1 && "You approve it"}
+        {step === 2 && "AI updates it"}
+        {step === 3 && "Validation removed"}
+        {step >= 4 && "Manthan blocks it"}
       </h2>
 
-      {/* Explanation */}
       <div style={styles.explanation}>
-        <p style={styles.explTitle}>{explanation.title}</p>
-        <p style={styles.explText}>{explanation.text}</p>
+        <p>{explanation.title}</p>
+        <p>{explanation.text}</p>
       </div>
 
-      {/* PR Simulation */}
       <PRCard>
         {step === 0 && <Message text="AI generated PR" />}
-
-        {step >= 1 && <Message text="AI-generated code approved" />}
-
+        {step >= 1 && <Message text="AI code approved" />}
         {step >= 2 && (
-          <Message
-            text="AI regenerated code after approval"
-            highlight
-          />
+          <Message text="AI updated code" highlight />
         )}
-
         {step >= 3 && (
           <>
-            <Message
-              text="AI removed validation — risk introduced"
-              type="error"
-            />
+            <Message text="Validation removed" type="error" />
             <CodeBlock />
           </>
         )}
-
         {step >= 4 && (
-          <Message
-            text="BLOCKED by Manthan — AI-modified code no longer matches approved version"
-            type="block"
-          />
+          <Message text="BLOCKED by Manthan" type="block" />
         )}
 
-        {/* Decision */}
-        <div style={{ marginTop: "16px" }}>
-          <p style={styles.label}>Decision Outcome</p>
-          <MergeButton blocked={step >= 4} />
-        </div>
+        <MergeButton blocked={step >= 4} />
       </PRCard>
 
-      {/* Actions */}
       <div style={styles.actions}>
-        {/* Replay */}
         <button
-          style={{
-            ...styles.replay,
-            opacity: isRunning ? 0.5 : 1,
-            cursor: isRunning ? "not-allowed" : "pointer",
-          }}
           disabled={isRunning}
           onClick={() => {
             setIsRunning(false);
@@ -169,94 +131,46 @@ export default function Experience() {
           {isRunning ? `Running (${timer}s)` : "Replay"}
         </button>
 
-        {/* Product CTA */}
-        <button
-          style={styles.primary}
-          onClick={() => navigate("/concept")}
-        >
-          Try your own scenario →
+        <button onClick={() => navigate("/concept")}>
+          Try scenario →
         </button>
       </div>
     </div>
   );
 }
 
-const styles = {
+const styles: Record<string, React.CSSProperties> = {
   page: {
     minHeight: "100vh",
     background: "#000",
     color: "#fff",
     display: "flex",
-    flexDirection: "column" as const,
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     gap: "20px",
-    padding: "40px 20px",
   },
 
   title: {
     fontSize: "32px",
-    fontWeight: 600,
   },
 
   context: {
-    fontSize: "14px",
     opacity: 0.6,
-    textAlign: "center" as const,
   },
 
   subTitle: {
     fontSize: "20px",
-    color: "rgba(255,255,255,0.7)",
-    textAlign: "center" as const,
   },
 
   explanation: {
-    maxWidth: "600px",
-    textAlign: "center" as const,
-    background: "#0b0b0b",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "10px",
-    padding: "20px",
-  },
-
-  explTitle: {
-    fontWeight: 600,
-    marginBottom: "6px",
-  },
-
-  explText: {
-    fontSize: "14px",
-    color: "rgba(255,255,255,0.7)",
-  },
-
-  label: {
-    fontSize: "12px",
-    opacity: 0.6,
-    marginBottom: "6px",
+    background: "#111",
+    padding: "16px",
+    borderRadius: "8px",
   },
 
   actions: {
     display: "flex",
-    gap: "12px",
-    marginTop: "20px",
-  },
-
-  replay: {
-    padding: "10px 18px",
-    background: "transparent",
-    color: "#4ade80",
-    border: "1px solid #4ade80",
-    borderRadius: "6px",
-  },
-
-  primary: {
-    padding: "10px 18px",
-    background: "#4ade80",
-    color: "#000",
-    border: "none",
-    borderRadius: "6px",
-    fontWeight: 600,
-    cursor: "pointer",
+    gap: "10px",
   },
 };
