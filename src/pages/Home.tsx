@@ -27,9 +27,20 @@ export default function Home() {
         >
           See why this matters →
         </button>
+
+        {/* VIDEO */}
+        <div style={styles.videoContainer}>
+          <iframe
+            src="https://www.youtube.com/embed/ndGwvSjgXu4?rel=0&modestbranding=1"
+            title="Manthan Video"
+            style={styles.video}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       </section>
 
-      {/* PROBLEM */}
+      {/* SHIFT */}
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>The Shift</h2>
 
@@ -58,9 +69,7 @@ export default function Home() {
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>Not competing with AI</h2>
 
-        <p style={styles.text}>
-          Manthan is not an AI system.
-        </p>
+        <p style={styles.text}>Manthan is not an AI system.</p>
 
         <p style={styles.text}>
           It is the layer that makes AI usable in critical systems.
@@ -76,9 +85,7 @@ export default function Home() {
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>Where this matters</h2>
 
-        <p style={styles.text}>
-          This is bigger than software.
-        </p>
+        <p style={styles.text}>This is bigger than software.</p>
 
         <div style={styles.grid}>
           <div style={styles.box}>Railway signalling</div>
@@ -101,27 +108,19 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* CLOSING */}
+      {/* FUTURE */}
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>The future shift</h2>
 
-        <p style={styles.text}>
-          We are moving from:
-        </p>
+        <p style={styles.text}>We are moving from:</p>
 
-        <p style={styles.strong}>
-          “AI can do this”
-        </p>
+        <p style={styles.strong}>“AI can do this”</p>
 
         <p style={styles.text}>to</p>
 
-        <p style={styles.highlightBig}>
-          “Should this be done?”
-        </p>
+        <p style={styles.highlightBig}>“Should this be done?”</p>
 
-        <p style={styles.text}>
-          That shift defines the future.
-        </p>
+        <p style={styles.text}>That shift defines the future.</p>
       </section>
 
       {/* FINAL CTA */}
@@ -242,5 +241,19 @@ const styles = {
     borderRadius: "8px",
     fontWeight: 600,
     cursor: "pointer",
+  },
+
+  videoContainer: {
+    marginTop: "40px",
+    display: "flex",
+    justifyContent: "center",
+  },
+
+  video: {
+    width: "100%",
+    maxWidth: "800px",
+    height: "450px",
+    borderRadius: "12px",
+    border: "1px solid rgba(255,255,255,0.1)",
   },
 };
