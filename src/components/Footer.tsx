@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer style={styles.footer}>
@@ -15,28 +17,37 @@ export default function Footer() {
         <p style={styles.text}>
           Born from AI.
           <br />
-          Built to solve its challenges and unlock its potential.
+          Built to solve its challenges.
         </p>
 
-        <a href="/founder" style={styles.link}>
+        <Link to="/founder" style={styles.link}>
           Read the story →
-        </a>
+        </Link>
       </div>
 
       {/* APPLICATIONS */}
       <div style={styles.section}>
         <h4 style={styles.heading}>Applications</h4>
-        <p style={styles.text}>
-          Railway signalling
-          <br />
-          Aviation systems
-          <br />
-          Healthcare
-          <br />
-          Financial systems
-          <br />
-          Software systems
-        </p>
+
+        <Link to="/applications/railway" style={styles.link}>
+          Railway signalling →
+        </Link>
+
+        <Link to="/applications/aviation" style={styles.link}>
+          Aviation systems →
+        </Link>
+
+        <Link to="/applications/healthcare" style={styles.link}>
+          Healthcare →
+        </Link>
+
+        <Link to="/applications/finance" style={styles.link}>
+          Financial systems →
+        </Link>
+
+        <Link to="/applications/software" style={styles.link}>
+          Software systems →
+        </Link>
       </div>
 
       {/* CONTACT */}
@@ -82,30 +93,25 @@ const styles = {
     justifyContent: "space-between",
     gap: "40px",
   },
-
   section: {
     minWidth: "180px",
     maxWidth: "250px",
   },
-
   brand: {
     fontSize: "20px",
     fontWeight: 600,
     marginBottom: "10px",
   },
-
   heading: {
     fontSize: "14px",
     marginBottom: "10px",
     color: "#aaa",
   },
-
   text: {
     fontSize: "13px",
     color: "rgba(255,255,255,0.6)",
     lineHeight: 1.6,
   },
-
   link: {
     display: "block",
     marginTop: "8px",
@@ -113,14 +119,12 @@ const styles = {
     color: "#4ade80",
     textDecoration: "none",
   },
-
   bottom: {
     width: "100%",
     marginTop: "40px",
     borderTop: "1px solid rgba(255,255,255,0.05)",
     paddingTop: "20px",
   },
-
   small: {
     fontSize: "12px",
     color: "rgba(255,255,255,0.4)",
