@@ -88,7 +88,7 @@ export default function Home() {
         </p>
 
         <p style={{ ...styles.subtext, marginTop: "16px" }}>
-          Manthan introduces deterministic decision-making—
+          Manthan introduces deterministic decision-making
           where every outcome is traceable, auditable, and verifiable.
         </p>
 
@@ -135,7 +135,7 @@ export default function Home() {
       {/* CTA */}
       <section style={{ ...styles.hero, marginTop: "120px" }}>
         <h2 style={styles.sectionTitle}>
-          Unlock the full value of AI—with trust.
+          Unlock the full value of AI with trust.
         </h2>
 
         <button style={styles.cta}>
