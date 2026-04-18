@@ -29,16 +29,16 @@ export default function Navbar() {
               style={{
                 ...styles.link,
                 color: isActive
-                  ? "#4ade80"
-                  : "rgba(255,255,255,0.6)",
+                  ? "#16a34a"
+                  : "rgba(0,0,0,0.6)",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "#fff")
+                (e.currentTarget.style.color = "#111")
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.color = isActive
-                  ? "#4ade80"
-                  : "rgba(255,255,255,0.6)")
+                  ? "#16a34a"
+                  : "rgba(0,0,0,0.6)")
               }
             >
               {item.label}
@@ -60,14 +60,14 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px 40px",
-    background: "rgba(0,0,0,0.85)",
+    background: "rgba(255,255,255,0.85)",
     backdropFilter: "blur(10px)",
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
+    borderBottom: "1px solid rgba(0,0,0,0.05)",
     zIndex: 1000,
   },
 
   logo: {
-    color: "#fff",
+    color: "#111",
     fontWeight: 600,
     fontSize: "18px",
     textDecoration: "none",

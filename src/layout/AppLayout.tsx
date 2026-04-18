@@ -16,8 +16,8 @@ export default function AppLayout({ children }: any) {
 const styles = {
   page: {
     minHeight: "100vh",
-    background: "#000",
-    color: "#fff",
+    background: "#ffffff",
+color: "#111",
   },
 
   content: {
