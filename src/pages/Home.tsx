@@ -28,8 +28,8 @@ export default function Home() {
           See why this matters →
         </button>
 
-        {/* VIDEO */}
-        <div style={styles.videoContainer}>
+        {/* RESPONSIVE VIDEO */}
+        <div style={styles.videoWrapper}>
           <iframe
             src="https://www.youtube.com/embed/ndGwvSjgXu4?rel=0&modestbranding=1"
             title="Manthan Video"
@@ -149,20 +149,20 @@ const styles = {
   },
 
   hero: {
-    textAlign: "center" as const,
+    textAlign: "center",
     maxWidth: "900px",
     margin: "0 auto",
     marginBottom: "100px",
   },
 
   headline: {
-    fontSize: "52px",
+    fontSize: "clamp(32px, 6vw, 52px)", // responsive text
     lineHeight: 1.2,
     fontWeight: 600,
   },
 
   headlineSmall: {
-    fontSize: "36px",
+    fontSize: "clamp(24px, 5vw, 36px)",
     fontWeight: 600,
   },
 
@@ -171,14 +171,14 @@ const styles = {
   },
 
   highlightBig: {
-    fontSize: "28px",
+    fontSize: "clamp(22px, 4vw, 28px)",
     color: "#4ade80",
     fontWeight: 600,
   },
 
   subtext: {
     marginTop: "20px",
-    fontSize: "18px",
+    fontSize: "clamp(16px, 2.5vw, 18px)",
     color: "rgba(255,255,255,0.7)",
   },
 
@@ -189,7 +189,7 @@ const styles = {
   },
 
   sectionTitle: {
-    fontSize: "28px",
+    fontSize: "24px",
     marginBottom: "20px",
   },
 
@@ -220,7 +220,7 @@ const styles = {
 
   grid: {
     display: "flex",
-    flexWrap: "wrap" as const,
+    flexWrap: "wrap",
     gap: "10px",
     marginTop: "20px",
   },
@@ -243,17 +243,24 @@ const styles = {
     cursor: "pointer",
   },
 
-  videoContainer: {
-    marginTop: "40px",
-    display: "flex",
-    justifyContent: "center",
+  /* ✅ RESPONSIVE VIDEO FIX */
+  videoWrapper: {
+    position: "relative",
+    width: "100%",
+    maxWidth: "900px",
+    margin: "40px auto 0",
+    paddingBottom: "56.25%", // 16:9 ratio
+    height: 0,
+    borderRadius: "12px",
+    overflow: "hidden",
+    border: "1px solid rgba(255,255,255,0.1)",
   },
 
   video: {
+    position: "absolute",
+    top: 0,
+    left: 0,
     width: "100%",
-    maxWidth: "800px",
-    height: "450px",
-    borderRadius: "12px",
-    border: "1px solid rgba(255,255,255,0.1)",
+    height: "100%",
   },
 };
