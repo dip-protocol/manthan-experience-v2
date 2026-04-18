@@ -1,11 +1,8 @@
-
 export default function Founder() {
   return (
     <div style={styles.page}>
       <div style={styles.container}>
-        <h1 style={styles.title}>
-          Why Manthan Exists
-        </h1>
+        <h1 style={styles.title}>Why Manthan Exists</h1>
 
         <p style={styles.lead}>
           Software decisions are being made faster than humans can verify them.
@@ -103,20 +100,22 @@ export default function Founder() {
           Focused on making decisions deterministic, explainable, and trustworthy.
         </p>
 
+        {/* CONTACT (FIXED) */}
         <div style={styles.contact}>
           <a
             href="https://www.linkedin.com/in/pavancharak/"
             target="_blank"
+            rel="noreferrer"
             style={styles.link}
           >
-            <Linkedin size={16} /> LinkedIn
+            LinkedIn →
           </a>
 
           <a
             href="mailto:founder@manthan.systems"
             style={styles.link}
           >
-            <Mail size={16} /> founder@manthan.systems
+            founder@manthan.systems
           </a>
         </div>
       </div>
@@ -159,6 +158,7 @@ const styles: Record<string, React.CSSProperties> = {
   text: {
     fontSize: "15px",
     color: "rgba(255,255,255,0.7)",
+    lineHeight: 1.6,
   },
 
   textStrong: {
@@ -169,6 +169,7 @@ const styles: Record<string, React.CSSProperties> = {
   list: {
     paddingLeft: "18px",
     color: "rgba(255,255,255,0.7)",
+    lineHeight: 1.6,
   },
 
   break: {
@@ -178,14 +179,13 @@ const styles: Record<string, React.CSSProperties> = {
   contact: {
     marginTop: "20px",
     display: "flex",
-    gap: "16px",
+    gap: "20px",
+    flexWrap: "wrap",
   },
 
   link: {
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
     color: "#4ade80",
     textDecoration: "none",
+    fontSize: "14px",
   },
 };
