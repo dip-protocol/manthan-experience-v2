@@ -25,29 +25,21 @@ export default function Footer() {
         </Link>
       </div>
 
-      {/* APPLICATIONS */}
+      {/* APPLICATIONS (NO LINKS) */}
       <div style={styles.section}>
         <h4 style={styles.heading}>Applications</h4>
 
-        <Link to="/applications/railway" style={styles.link}>
-          Railway signalling →
-        </Link>
-
-        <Link to="/applications/aviation" style={styles.link}>
-          Aviation systems →
-        </Link>
-
-        <Link to="/applications/healthcare" style={styles.link}>
-          Healthcare →
-        </Link>
-
-        <Link to="/applications/finance" style={styles.link}>
-          Financial systems →
-        </Link>
-
-        <Link to="/applications/software" style={styles.link}>
-          Software systems →
-        </Link>
+        <p style={styles.text}>
+          Railway signalling
+          <br />
+          Aviation systems
+          <br />
+          Healthcare
+          <br />
+          Financial systems
+          <br />
+          Software systems
+        </p>
       </div>
 
       {/* CONTACT */}
