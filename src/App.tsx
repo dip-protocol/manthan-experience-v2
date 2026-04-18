@@ -8,11 +8,11 @@ import Trust from "./pages/Trust";
 import Founder from "./pages/Founder";
 
 // APPLICATION PAGES
-import Railway from "./pages/applications/Railway";
-import Aviation from "./pages/applications/Aviation";
-import Healthcare from "./pages/applications/Healthcare";
-import Finance from "./pages/applications/Finance";
-import Software from "./pages/applications/Software";
+import Railway from "./pages/applications/Railway.tsx";
+import Aviation from "./pages/applications/Aviation.tsx";
+import Healthcare from "./pages/applications/Healthcare.tsx";
+import Finance from "./pages/applications/Finance.tsx";
+import Software from "./pages/applications/Software.tsx";
 
 export default function App() {
   return (
