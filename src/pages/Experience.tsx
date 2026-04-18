@@ -11,27 +11,27 @@ function getExplanation(step: number) {
     case 0:
       return {
         title: "AI generates code",
-        text: "AI generates code instantly. It looks correct.",
+        text: "AI generates code instantly. It accelerates development.",
       };
     case 1:
       return {
-        title: "AI code approved",
-        text: "You approve AI-generated code.",
+        title: "Code is approved",
+        text: "You review and approve the AI-generated code.",
       };
     case 2:
       return {
-        title: "AI updates code",
-        text: "AI changes code after approval. Not reviewed.",
+        title: "AI updates the code",
+        text: "AI continues improving the code after approval.",
       };
     case 3:
       return {
-        title: "Validation removed",
-        text: "Critical validation removed. Risk introduced.",
+        title: "System does not re-verify",
+        text: "The system assumes approval still applies. Reality has changed.",
       };
     case 4:
       return {
-        title: "Manthan decision",
-        text: "Approved version ≠ current code. Blocked.",
+        title: "Manthan evaluates reality",
+        text: "Approved version ≠ current code. Decision is re-evaluated and blocked.",
       };
     default:
       return { title: "", text: "" };
@@ -82,31 +82,32 @@ export default function Experience() {
 
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>AI Code Decision</h1>
+      {/* HEADER */}
+      <h1 style={styles.title}>AI Decision Flow</h1>
 
       <p style={styles.context}>
-        AI writes code faster than humans can verify it.
+        AI accelerates development. But decisions must still be verified.
       </p>
 
       <h2 style={styles.subTitle}>
-        {step === 0 && "AI generates code"}
-        {step === 1 && "You approve it"}
-        {step === 2 && "AI updates it"}
-        {step === 3 && "Validation removed"}
-        {step >= 4 && "Manthan blocks it"}
+        {step === 0 && "AI generates"}
+        {step === 1 && "Decision approved"}
+        {step === 2 && "State changes"}
+        {step === 3 && "System assumes"}
+        {step >= 4 && "Manthan verifies"}
       </h2>
 
-      {/* Explanation */}
+      {/* EXPLANATION */}
       <div style={styles.explanation}>
         <p style={styles.explTitle}>{explanation.title}</p>
         <p style={styles.explText}>{explanation.text}</p>
       </div>
 
-      {/* PR Simulation */}
+      {/* PR SIMULATION */}
       <PRCard>
         {step === 0 && <Message text="AI generated PR" />}
 
-        {step >= 1 && <Message text="AI code approved" />}
+        {step >= 1 && <Message text="Code approved" />}
 
         {step >= 2 && (
           <Message text="AI updated code after approval" highlight />
@@ -114,9 +115,11 @@ export default function Experience() {
 
         {step >= 3 && (
           <>
-            <Message text="Validation removed — risk introduced" type="error" />
+            <Message
+              text="System state changed — verification required"
+              type="error"
+            />
 
-            {/* ✅ FIXED: CodeBlock now has required props */}
             <CodeBlock
               before={`if (amount > limit) {
   throw new Error("Limit exceeded");
@@ -128,19 +131,19 @@ export default function Experience() {
 
         {step >= 4 && (
           <Message
-            text="BLOCKED by Manthan — code no longer matches approved version"
+            text="BLOCKED — current state does not match approved decision"
             type="block"
           />
         )}
 
-        {/* Decision */}
+        {/* DECISION */}
         <div style={{ marginTop: "16px" }}>
           <p style={styles.label}>Decision Outcome</p>
           <MergeButton blocked={step >= 4} />
         </div>
       </PRCard>
 
-      {/* Actions */}
+      {/* ACTIONS */}
       <div style={styles.actions}>
         <button
           style={{
@@ -161,7 +164,7 @@ export default function Experience() {
           style={styles.primary}
           onClick={() => navigate("/concept")}
         >
-          Try scenario →
+          Understand the system →
         </button>
       </div>
     </div>

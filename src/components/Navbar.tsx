@@ -1,94 +1,76 @@
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  const { pathname } = useLocation();
+  const location = useLocation();
 
-  function isActive(path: string) {
-    return pathname === path;
-  }
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Experience", path: "/experience" },
+    { label: "Concept", path: "/concept" },
+    { label: "Trust", path: "/trust" },
+  ];
 
   return (
     <nav style={styles.nav}>
-      <div style={styles.inner}>
-        {/* Logo */}
-        <div style={styles.logo}>
-          <Link to="/" style={styles.logoText}>
-            Manthan
-          </Link>
-        </div>
+      {/* LOGO */}
+      <Link to="/" style={styles.logo}>
+        Manthan
+      </Link>
 
-        {/* Links */}
-        <div style={styles.links}>
-          <NavLink to="/" label="Home" active={isActive("/")} />
-          <NavLink to="/concept" label="Concept" active={isActive("/concept")} />
-          <NavLink to="/experience" label="Experience" active={isActive("/experience")} />
-          <NavLink to="/trust" label="Trust" active={isActive("/trust")} />
-          <NavLink to="/founder" label="Founder" active={isActive("/founder")} /> {/* ✅ ADDED */}
-        </div>
+      {/* LINKS */}
+      <div style={styles.links}>
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              style={{
+                ...styles.link,
+                color: isActive ? "#4ade80" : "rgba(255,255,255,0.6)",
+              }}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
 }
 
-function NavLink({
-  to,
-  label,
-  active,
-}: {
-  to: string;
-  label: string;
-  active: boolean;
-}) {
-  return (
-    <Link
-      to={to}
-      style={{
-        ...styles.link,
-        ...(active ? styles.active : {}),
-      }}
-    >
-      {label}
-    </Link>
-  );
-}
-
 const styles = {
   nav: {
+    position: "fixed" as const,
+    top: 0,
+    left: 0,
     width: "100%",
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
-  },
-
-  inner: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    padding: "16px 20px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: "20px 40px",
+    background: "rgba(0,0,0,0.85)",
+    backdropFilter: "blur(10px)",
+    borderBottom: "1px solid rgba(255,255,255,0.05)",
+    zIndex: 1000,
   },
 
-  logo: {},
-
-  logoText: {
-    textDecoration: "none",
+  logo: {
     color: "#fff",
     fontWeight: 600,
-    fontSize: "16px",
+    fontSize: "18px",
+    textDecoration: "none",
   },
 
   links: {
     display: "flex",
-    gap: "20px",
+    gap: "28px",
   },
 
   link: {
     textDecoration: "none",
-    color: "rgba(255,255,255,0.6)",
     fontSize: "14px",
-    transition: "color 0.2s",
-  },
-
-  active: {
-    color: "#fff",
+    transition: "0.2s",
   },
 };

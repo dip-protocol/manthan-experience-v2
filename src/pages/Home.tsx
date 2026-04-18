@@ -15,70 +15,132 @@ export default function Home() {
           </span>
         </h1>
 
-        {/* Killer line */}
         <p style={styles.killer}>
-          AI is generating code faster than anyone can verify it.
+          AI is accelerating how systems are built and decisions are made.
         </p>
 
-        {/* Narrative */}
         <p style={styles.subtext}>
-          AI generates code.
+          AI generates code instantly.
           <br />
-          You approve it.
+          It enables speed at scale.
           <br />
           <br />
-          Then the AI changes it again.
+          But speed introduces complexity.
           <br />
-          The system still says “approved.”
+          And complexity demands certainty.
         </p>
 
         <p style={styles.impact}>
-          No one reviewed what actually shipped.
+          The question is no longer speed.
+          <br />
+          It is: can we trust the decision?
         </p>
 
-        {/* CTA */}
         <button
           style={styles.cta}
           onClick={() => navigate("/experience")}
         >
-          See why this fails →
+          See how this evolves →
         </button>
       </section>
 
-      {/* PROBLEM BLOCKS */}
+      {/* PROBLEM / GAP */}
       <section style={styles.blocks}>
         <div style={styles.card}>
-          <h3>AI changes code after approval</h3>
+          <h3>AI moves faster than verification</h3>
           <p>
-            You approve AI-generated code.
-            <br />
-            The AI updates it again.
+            AI generates and updates rapidly.
             <br />
             <br />
-            That version is never reviewed.
+            Systems struggle to continuously verify
+            what is actually changing.
           </p>
         </div>
 
         <div style={styles.card}>
-          <h3>Your system trusts outdated approval</h3>
+          <h3>Systems rely on assumed state</h3>
           <p>
-            CI passes. Tests pass.
+            Approvals, tests, and signals pass.
             <br />
             <br />
-            The system still assumes
-            the approved version is current.
+            But they often reflect
+            an earlier version of reality.
           </p>
         </div>
 
         <div style={styles.card}>
-          <h3>You ship unverified AI code</h3>
+          <h3>Decisions lack deterministic truth</h3>
           <p>
-            A different version gets merged.
+            Actions are taken on incomplete context.
             <br />
             <br />
-            <strong>No one verified what actually shipped.</strong>
+            <strong>The system cannot guarantee correctness.</strong>
           </p>
         </div>
+      </section>
+
+      {/* MANTHAN INTRO */}
+      <section style={{ ...styles.hero, marginTop: "120px" }}>
+        <h2 style={styles.sectionTitle}>Manthan</h2>
+
+        <p style={{ ...styles.subtext, marginTop: "16px" }}>
+          Born from AI. Built to make its decisions reliable.
+        </p>
+
+        <p style={{ ...styles.subtext, marginTop: "16px" }}>
+          Manthan introduces deterministic decision-making—
+          where every outcome is traceable, auditable, and verifiable.
+        </p>
+
+        <p style={{ ...styles.impact, marginTop: "20px" }}>
+          Same input → same decision. Every time.
+        </p>
+      </section>
+
+      {/* VALUE SHIFT */}
+      <section style={{ ...styles.hero, marginTop: "120px" }}>
+        <h2 style={styles.sectionTitle}>AI + Manthan</h2>
+
+        <p style={{ ...styles.subtext, marginTop: "16px" }}>
+          AI unlocks speed and capability.
+          <br />
+          Manthan ensures trust and correctness.
+        </p>
+
+        <div style={styles.blocks}>
+          <div style={styles.card}>
+            <h3 style={{ color: "#999" }}>AI Alone</h3>
+            <p>
+              Fast decisions
+              <br />
+              High capability
+              <br />
+              Low predictability
+            </p>
+          </div>
+
+          <div style={{ ...styles.card, border: "1px solid #4ade80" }}>
+            <h3 style={{ color: "#4ade80" }}>AI + Manthan</h3>
+            <p>
+              Deterministic outcomes
+              <br />
+              Explainable decisions
+              <br />
+              Fully auditable systems
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ ...styles.hero, marginTop: "120px" }}>
+        <h2 style={styles.sectionTitle}>
+          Unlock the full value of AI—with trust.
+        </h2>
+
+        <button style={styles.cta}>
+          Explore Manthan →
+        </button>
       </section>
     </div>
   );
@@ -128,6 +190,11 @@ const styles = {
     fontWeight: 600,
   },
 
+  sectionTitle: {
+    fontSize: "36px",
+    fontWeight: 600,
+  },
+
   cta: {
     marginTop: "32px",
     padding: "14px 28px",
@@ -145,6 +212,7 @@ const styles = {
     gap: "20px",
     justifyContent: "center",
     flexWrap: "wrap" as const,
+    marginTop: "40px",
   },
 
   card: {

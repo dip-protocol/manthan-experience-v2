@@ -11,12 +11,10 @@ export default function Trust() {
           </span>
         </h1>
 
-        {/* AI context */}
         <p style={styles.killer}>
           AI systems are making decisions faster than humans can verify them.
         </p>
 
-        {/* Subtext */}
         <p style={styles.subtext}>
           Most systems give you an answer.
           <br />
@@ -25,7 +23,7 @@ export default function Trust() {
         </p>
       </section>
 
-      {/* CARDS */}
+      {/* CORE TRUST PROPERTIES */}
       <section style={styles.cards}>
         <div style={styles.card}>
           <h3>Every decision is explicit</h3>
@@ -40,15 +38,14 @@ export default function Trust() {
         </div>
 
         <div style={styles.card}>
-          <h3>Same input → same decision</h3>
+          <h3>Deterministic by design</h3>
           <p>
-            Given the same input,
-            the outcome never changes.
+            Same input → same decision.
             <br />
             <br />
             No randomness.
             <br />
-            No interpretation.
+            No hidden logic.
           </p>
         </div>
 
@@ -60,6 +57,50 @@ export default function Trust() {
             <br />
             <br />
             <strong>It escalates.</strong>
+          </p>
+        </div>
+      </section>
+
+      {/* NEW: CRITICAL TRUST LAYER */}
+      <section style={styles.centerBlock}>
+        <h2 style={styles.sectionTitle}>
+          Decisions are not made by AI
+        </h2>
+
+        <p style={styles.subtext}>
+          AI can generate inputs.
+          <br />
+          <br />
+          But decisions are evaluated
+          using explicit rules and verified data.
+        </p>
+      </section>
+
+      {/* NEW: TRACEABILITY */}
+      <section style={styles.cards}>
+        <div style={styles.card}>
+          <h3>Fully traceable</h3>
+          <p>
+            Every decision can be traced
+            back to the exact input and rules used.
+          </p>
+        </div>
+
+        <div style={styles.card}>
+          <h3>Auditable by design</h3>
+          <p>
+            Decisions are reproducible.
+            <br />
+            <br />
+            Nothing is hidden.
+          </p>
+        </div>
+
+        <div style={styles.card}>
+          <h3>Versioned decisions</h3>
+          <p>
+            Every decision is tied
+            to a specific rule set.
           </p>
         </div>
       </section>
@@ -83,7 +124,7 @@ const styles = {
     display: "flex",
     flexDirection: "column" as const,
     alignItems: "center",
-    gap: "40px",
+    gap: "60px",
   },
 
   hero: {
@@ -119,7 +160,6 @@ const styles = {
     gap: "20px",
     flexWrap: "wrap" as const,
     justifyContent: "center",
-    marginTop: "20px",
   },
 
   card: {
@@ -130,8 +170,17 @@ const styles = {
     padding: "20px",
   },
 
+  centerBlock: {
+    textAlign: "center" as const,
+    maxWidth: "700px",
+  },
+
+  sectionTitle: {
+    fontSize: "28px",
+    fontWeight: 600,
+  },
+
   closing: {
-    marginTop: "20px",
     fontSize: "22px",
     fontWeight: 600,
     textAlign: "center" as const,
