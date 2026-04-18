@@ -100,7 +100,7 @@ export default function Founder() {
           Focused on making decisions deterministic, explainable, and trustworthy.
         </p>
 
-        {/* CONTACT (FIXED) */}
+        {/* CLEAN CONTACT */}
         <div style={styles.contact}>
           <a
             href="https://www.linkedin.com/in/pavancharak/"
@@ -123,7 +123,7 @@ export default function Founder() {
   );
 }
 
-const styles: Record<string, React.CSSProperties> = {
+const styles = {
   page: {
     minHeight: "100vh",
     background: "#000",
@@ -169,7 +169,6 @@ const styles: Record<string, React.CSSProperties> = {
   list: {
     paddingLeft: "18px",
     color: "rgba(255,255,255,0.7)",
-    lineHeight: 1.6,
   },
 
   break: {
@@ -180,12 +179,10 @@ const styles: Record<string, React.CSSProperties> = {
     marginTop: "20px",
     display: "flex",
     gap: "20px",
-    flexWrap: "wrap",
   },
 
   link: {
     color: "#4ade80",
     textDecoration: "none",
-    fontSize: "14px",
   },
 };
