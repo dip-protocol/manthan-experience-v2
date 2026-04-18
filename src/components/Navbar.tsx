@@ -5,8 +5,8 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "Experience", path: "/experience" },
     { label: "Concept", path: "/concept" },
+    { label: "Experience", path: "/experience" },
     { label: "Trust", path: "/trust" },
   ];
 
@@ -28,8 +28,18 @@ export default function Navbar() {
               to={item.path}
               style={{
                 ...styles.link,
-                color: isActive ? "#4ade80" : "rgba(255,255,255,0.6)",
+                color: isActive
+                  ? "#4ade80"
+                  : "rgba(255,255,255,0.6)",
               }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "#fff")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = isActive
+                  ? "#4ade80"
+                  : "rgba(255,255,255,0.6)")
+              }
             >
               {item.label}
             </Link>
@@ -72,5 +82,6 @@ const styles = {
     textDecoration: "none",
     fontSize: "14px",
     transition: "0.2s",
+    cursor: "pointer",
   },
 };
